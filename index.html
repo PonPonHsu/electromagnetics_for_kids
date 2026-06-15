@@ -121,6 +121,9 @@
             border-radius: 4px;
             padding: 15px;
             margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .alert {
@@ -261,11 +264,16 @@
 
         <p><span class="tag">右手安培定則</span></p>
         <div class="analogy-box">
-            <p>想像你的右手握住導線：</p>
-            <ul>
-                <li><b>大拇指：</b> 指向電流的方向（+ ➔ -）。</li>
-                <li><b>四隻手指：</b> 彎曲的方向就是「磁場方向」。</li>
-            </ul>
+            <div style="flex: 1;">
+                <p>想像你的右手握住導線：</p>
+                <ul>
+                    <li><b>大拇指：</b> 指向電流的方向（+ ➔ -）。</li>
+                    <li><b>四隻手指：</b> 彎曲的方向就是「磁場方向」。</li>
+                </ul>
+            </div>
+            <div class="reference-image-container" style="flex: 1; margin: 0;">
+                <img src="ampere_rule.png" alt="安培右手定則" style="max-height: 150px;">
+            </div>
         </div>
 
         <p><span class="tag">操作步驟</span> 將導線放置在指南針上方，接通電源後觀察：</p>
@@ -302,6 +310,21 @@
         <h2>3. 電磁感應實驗</h2>
         <p>如果電流可以產生磁場，那反過來「磁場可以產生電流」嗎？法拉第發現：只有在磁場「發生變化」時，電流才會出現。</p>
 
+        <p><span class="tag">法拉第右手定則</span> (弗萊明右手定則)</p>
+        <div class="analogy-box">
+            <div style="flex: 1;">
+                <p>用於判斷發電機中的感應電流方向：</p>
+                <ul>
+                    <li><b>大拇指：</b> 導體運動方向 (力)。</li>
+                    <li><b>食指：</b> 磁場方向 (N ➔ S)。</li>
+                    <li><b>中指：</b> 感應電流方向。</li>
+                </ul>
+            </div>
+            <div class="reference-image-container" style="flex: 1; margin: 0;">
+                <img src="faraday_rule.png" alt="法拉第/弗萊明右手定則" style="max-height: 150px;">
+            </div>
+        </div>
+
         <p><span class="tag">實驗步驟</span> 將強力磁鐵快速穿過線圈，觀察檢流計或 LED 的反應。</p>
         
         <div class="alert">
@@ -314,27 +337,20 @@
             <tr>
                 <th>操作動作</th>
                 <th>電流反應 (無 / 微弱 / 強烈)</th>
-                <th>電流方向 (順時針 / 逆時針)</th>
             </tr>
             <tr>
-                <td>磁鐵 N 極快速進入線圈</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>磁鐵 N 極緩慢進入線圈</td>
-                <td></td>
+                <td>磁鐵快速進入線圈</td>
                 <td></td>
             </tr>
             <tr>
-                <td>磁鐵 N 極快速拉出線圈</td>
+                <td>磁鐵緩慢進入線圈</td>
                 <td></td>
+            </tr>
+            <tr>
+                <td>磁鐵快速拉出線圈</td>
                 <td></td>
             </tr>
         </table>
-
-        <p><span class="tag">實驗結論</span></p>
-        <p>感應電流的大小與磁場變化的速度成 <span class="underline"></span> 比。這就是現代所有發電機的基本原理！</p>
 
         <div class="footer">Page 3: 電磁感應</div>
     </div>
@@ -358,7 +374,7 @@
         </ul>
 
         <p><span class="tag">實作任務</span> 根據教材材料包組裝簡易馬達，並完成測試：</p>
-        <div class="analogy-box">
+        <div class="analogy-box" style="display: block;">
             <b>[排除故障]</b> 如果你的馬達不轉，請檢查：<br>
             1. 線圈的漆包線刮漆是否正確？<br>
             2. 磁鐵位置是否太遠？<br>
