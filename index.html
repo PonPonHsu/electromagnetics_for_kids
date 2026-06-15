@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電磁學講義：看不見的力場 (吾思質感版)</title>
+    <style>
+        /* 1. 全域列印與礦物/木質色彩設定 */
+        :root {
+            --mineral-dark: #4a5759;   /* 深板岩灰 */
+            --mineral-slate: #6b7a8f;  /* 藍灰色 */
+            --wood-dark: #8a7360;      /* 深木色 */
+            --wood-light: #e6dfd3;     /* 淺木色/米色 */
+            --paper-bg: #fdfbf7;       /* 紙張底色 */
+            --accent-terra: #b87355;   /* 赤陶色 */
+            --text-main: #333333;
+            --text-muted: #666666;
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+        body {
+            background-color: #d1d5db; 
+            margin: 0;
+            padding: 0;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            color: var(--text-main);
+        }
+
+        /* A4 紙張容器 */
+        .topic-page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin: 10mm auto;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* 列印分頁控制 */
+        @media print {
+            body { background: none; }
+            .topic-page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                height: 100%;
+                break-after: page;
+            }
+        }
+
+        /* 2. 標題與 LOGO 資訊列 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1.5px solid var(--mineral-dark);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .page-logo {
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .main-title {
+            font-size: 20pt;
+            color: var(--mineral-dark);
+            margin: 0 0 8px 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .student-info {
+            font-size: 11pt;
+            color: var(--text-muted);
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+        }
+
+        .underline {
+            border-bottom: 1px solid var(--text-muted);
+            min-width: 80px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        /* 3. 內容元件樣式 */
+        h2 {
+            font-size: 16pt;
+            color: var(--wood-dark);
+            border-left: 4px solid var(--wood-dark);
+            padding-left: 12px;
+            margin: 25px 0 15px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 12pt;
+            color: var(--mineral-slate);
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        p, li { font-size: 11pt; line-height: 1.8; margin-bottom: 8px; }
+
+        .analogy-box {
+            background: var(--paper-bg);
+            border: 1px solid var(--wood-light);
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .alert {
+            background: #fcf9f5;
+            border-left: 4px solid var(--accent-terra);
+            padding: 12px 20px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+            color: #5c4538;
+        }
+
+        .drawing-area {
+            border: 1px dashed var(--mineral-slate);
+            flex-grow: 1;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--mineral-slate);
+            background: var(--paper-bg);
+            border-radius: 4px;
+            min-height: 150px;
+            font-size: 10pt;
+            letter-spacing: 1px;
+        }
+
+        .reference-image-container {
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .reference-image-container img {
+            max-width: 100%;
+            border: 1px solid var(--wood-light);
+            border-radius: 4px;
+            padding: 8px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            object-fit: contain;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 10.5pt;
+        }
+
+        th, td {
+            border: 1px solid var(--wood-light);
+            padding: 8px 10px;
+            text-align: center;
+        }
+
+        th { 
+            background: var(--paper-bg); 
+            color: var(--wood-dark); 
+            font-weight: 600;
+        }
+
+        .footer {
+            margin-top: auto;
+            font-size: 9pt;
+            color: var(--text-muted);
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--wood-light);
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--wood-dark);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 2px;
+            font-size: 9pt;
+            margin-right: 8px;
+            vertical-align: text-bottom;
+        }
+
+        .placeholder-box {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--wood-light);
+            font-size: 24pt;
+            font-weight: bold;
+            border: 4px dashed var(--wood-light);
+            margin: 50px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topic-page">
+        <div class="header">
+            <img src="logo.jpg" class="page-logo" alt="LOGO">
+            <div class="header-right">
+                <h1 class="main-title">看不見的力：磁場觀察</h1>
+                <div class="student-info">
+                    姓名：<span class="underline"></span>
+                    日期：<span class="underline"></span>
+                </div>
+            </div>
+        </div>
+        
+        <h2>1. 磁鐵的兩極與互動</h2>
+        <p>磁力與電力一樣，都有「同極相斥、異極相吸」的特性。雖然眼睛看不見，但磁鐵周圍充滿了名為「磁場」的空間。</p>
+        
+        <p><span class="tag">觀察實驗</span> 使用強力磁鐵與鐵粉（或磁力觀察片），觀察磁鐵周圍的線條分布。</p>
+        <div class="drawing-area" style="min-height: 250px;">
+            在此畫出單顆條形磁鐵周圍的「磁力線」分布圖
+        </div>
+        
+        <p><span class="tag">思考任務</span></p>
+        <ul>
+            <li>磁力線最密集的地方在哪裡？ <span class="underline"></span></li>
+            <li>如果將兩顆磁鐵的 N 極互相靠近，中間的磁力線會如何變化？</li>
+        </ul>
+        <div class="drawing-area" style="min-height: 200px;">
+            畫出「N極對N極」時的磁力線模擬圖
+        </div>
+
+        <div class="footer">Page 1: 磁鐵磁場</div>
+    </div>
+
+    <div class="topic-page">
+        <div class="header">
+            <img src="logo.jpg" class="page-logo" alt="LOGO">
+            <div class="header-right">
+                <h1 class="main-title">奧斯特的發現：電生磁</h1>
+            </div>
+        </div>
+
+        <h2>2. 載流導線與右手安培定則</h2>
+        <p>1820年，科學家奧斯特意外發現：當電流流過導線時，旁邊的指南針竟然發生了偏轉！這代表電流會產生磁場。</p>
+
+        <p><span class="tag">右手安培定則</span></p>
+        <div class="analogy-box">
+            <p>想像你的右手握住導線：</p>
+            <ul>
+                <li><b>大拇指：</b> 指向電流的方向（+ ➔ -）。</li>
+                <li><b>四隻手指：</b> 彎曲的方向就是「磁場方向」。</li>
+            </ul>
+        </div>
+
+        <p><span class="tag">操作步驟</span> 將導線放置在指南針上方，接通電源後觀察：</p>
+        <table>
+            <tr>
+                <th width="30%">電流方向</th>
+                <th width="70%">指南針 N 極偏轉方向 (左/右)</th>
+            </tr>
+            <tr>
+                <td>由南向北流</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>由北向南流</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p><span class="tag">進階：電磁鐵</span></p>
+        <p>當我們將導線繞成「線圈」，磁場會互相疊加變強。試著增加線圈圈數，測試吸起迴紋針的數量。</p>
+        <p>圈數越多，磁性越 <span class="underline"></span>；電流越大，磁性越 <span class="underline"></span>。</p>
+
+        <div class="footer">Page 2: 載流導線磁場</div>
+    </div>
+
+    <div class="topic-page">
+        <div class="header">
+            <img src="logo.jpg" class="page-logo" alt="LOGO">
+            <div class="header-right">
+                <h1 class="main-title">法拉第的挑戰：磁生電</h1>
+            </div>
+        </div>
+
+        <h2>3. 電磁感應實驗</h2>
+        <p>如果電流可以產生磁場，那反過來「磁場可以產生電流」嗎？法拉第發現：只有在磁場「發生變化」時，電流才會出現。</p>
+
+        <p><span class="tag">實驗步驟</span> 將強力磁鐵快速穿過線圈，觀察檢流計或 LED 的反應。</p>
+        
+        <div class="alert">
+            <b>[觀察重點]</b> 磁鐵「靜止不動」放在線圈裡時，會有電流產生嗎？<br>
+            答：<span class="underline"></span> (會 / 不會)
+        </div>
+
+        <p><span class="tag">觀察記錄表</span></p>
+        <table>
+            <tr>
+                <th>操作動作</th>
+                <th>電流反應 (無 / 微弱 / 強烈)</th>
+                <th>電流方向 (順時針 / 逆時針)</th>
+            </tr>
+            <tr>
+                <td>磁鐵 N 極快速進入線圈</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>磁鐵 N 極緩慢進入線圈</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>磁鐵 N 極快速拉出線圈</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p><span class="tag">實驗結論</span></p>
+        <p>感應電流的大小與磁場變化的速度成 <span class="underline"></span> 比。這就是現代所有發電機的基本原理！</p>
+
+        <div class="footer">Page 3: 電磁感應</div>
+    </div>
+
+    <div class="topic-page">
+        <div class="header">
+            <img src="logo.jpg" class="page-logo" alt="LOGO">
+            <div class="header-right">
+                <h1 class="main-title">旋轉的動力：直流馬達</h1>
+            </div>
+        </div>
+
+        <h2>4. 電流在磁場中的受力</h2>
+        <p>當我們把一根通電的導線放入磁場中，導線會受到一個推力。馬達就是利用這個力，將「電能」轉換為「動能」的裝置。</p>
+
+        <p><span class="tag">馬達的三大構造</span></p>
+        <ul>
+            <li><b>場磁鐵：</b> 提供穩定的磁場。</li>
+            <li><b>電樞線圈：</b> 電流流過的通道，產生受力。</li>
+            <li><b>換向器與電刷：</b> 負責定時切換電流方向，讓線圈能持續朝同方向旋轉。</li>
+        </ul>
+
+        <p><span class="tag">實作任務</span> 根據教材材料包組裝簡易馬達，並完成測試：</p>
+        <div class="analogy-box">
+            <b>[排除故障]</b> 如果你的馬達不轉，請檢查：<br>
+            1. 線圈的漆包線刮漆是否正確？<br>
+            2. 磁鐵位置是否太遠？<br>
+            3. 電池電力是否足夠？
+        </div>
+
+        <p><span class="tag">實驗筆記</span></p>
+        <ul>
+            <li>如果改變電池的正負極，馬達轉動方向會？ <span class="underline"></span></li>
+            <li>如果增加磁鐵的數量，馬達轉速會變？ <span class="underline"></span></li>
+        </ul>
+
+        <div class="footer">Page 4: 馬達實作</div>
+    </div>
+
+    <div class="topic-page">
+        <div class="header">
+            <img src="logo.jpg" class="page-logo" alt="LOGO">
+            <div class="header-right">
+                <h1 class="main-title">能源工廠：發電機挑戰</h1>
+            </div>
+        </div>
+
+        <h2>5. 終極結業任務</h2>
+        
+        <div class="placeholder-box">
+            內容留白<br>
+            (待材料包資訊確認後補充)
+        </div>
+
+        <p style="text-align: center; color: var(--wood-dark); font-weight: bold;">
+            準備好將你的機械能轉換成電力了嗎？
+        </p>
+
+        <div style="display:flex; justify-content: space-between; align-items: flex-end; margin-top: auto;">
+            <div style="border: 1px dashed var(--mineral-slate); width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 10pt; color: var(--mineral-slate);">
+                老師驗收章
+            </div>
+            <p style="font-size: 14pt; color: var(--wood-dark); font-weight: 600; margin: 0;">電磁學大師認證</p>
+        </div>
+
+        <div class="footer">Page 5: 發電機實踐</div>
+    </div>
+
+</body>
+</html>
