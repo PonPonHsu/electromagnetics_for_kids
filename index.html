@@ -44,7 +44,7 @@
         /* 列印分頁控制 (A4 滿版) */
         @page {
             size: A4;
-            margin: 0; /* 移除瀏覽器預設頁邊距 */
+            margin: 0; 
         }
         
         @media print {
@@ -73,7 +73,7 @@
             align-items: center;
             border-bottom: 1.5px solid var(--mineral-dark);
             padding-bottom: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .page-logo { height: 45px; object-fit: contain; }
@@ -210,33 +210,33 @@
         ol { margin-top: 5px; margin-bottom: 5px; padding-left: 20px; }
         ol li { line-height: 1.4; font-size: 10.5pt; }
 
-        /* 第五頁專用：14宮格排版 */
+        /* 第五與第六頁專用：雙欄大圖排版 */
         .assembly-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-top: 10px;
+            grid-template-columns: repeat(2, 1fr); /* 雙欄 */
+            gap: 15px;
+            margin-top: 15px;
             flex-grow: 1;
         }
         .step-card {
             background: var(--paper-bg);
             border: 1px solid var(--wood-light);
-            border-radius: 4px;
-            padding: 6px;
+            border-radius: 8px;
+            padding: 12px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 10px;
         }
         .step-img-box {
             background: #ffffff;
             border: 1px dashed var(--mineral-slate);
-            height: 65px;
+            height: 135px; /* 高度大幅增加 */
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--mineral-slate);
-            font-size: 8pt;
-            border-radius: 2px;
+            font-size: 10pt;
+            border-radius: 4px;
             overflow: hidden;
             position: relative;
         }
@@ -248,17 +248,19 @@
             top: 0;
             left: 0;
             background: #ffffff;
+            padding: 5px;
         }
         .step-desc {
-            font-size: 8.5pt;
-            line-height: 1.4;
+            font-size: 11pt; /* 字體放大 */
+            line-height: 1.5;
             color: var(--text-main);
             text-align: left;
         }
         .step-num {
+            font-size: 12pt;
             font-weight: bold;
             color: var(--mineral-dark);
-            margin-right: 2px;
+            margin-right: 4px;
         }
     </style>
 </head>
@@ -435,14 +437,14 @@
         <div class="header">
             <img src="logo.jpg" class="page-logo" alt="LOGO">
             <div class="header-right">
-                <h1 class="main-title">能源工廠：發電機組裝</h1>
+                <h1 class="main-title">能源工廠：發電機組裝 (上)</h1>
             </div>
         </div>
 
         <h2>5. 終極結業任務</h2>
         <p><b>原理簡介：</b> 透過手搖轉動齒輪，皮帶帶動線圈在磁場中旋轉，切割磁力線產生「感應電流」，點亮 LED 燈！</p>
         
-        <div class="alert" style="border-left-color: var(--wood-dark); padding: 8px 15px; margin: 5px 0;">
+        <div class="alert" style="border-left-color: var(--wood-dark); padding: 12px 15px; margin: 10px 0;">
             <b>[注意事項]</b> 請小心操作避免零件遺失，遇到組裝問題請舉手請老師協助。
         </div>
 
@@ -489,6 +491,20 @@
                 </div>
                 <div class="step-desc"><span class="step-num">6.</span> 取兩塊 5 號和 3 號木板固定（帶圓圈的孔需朝同向對齊）。</div>
             </div>
+        </div>
+
+        <div class="footer">Page 5: 發電機實踐 (1/2)</div>
+    </div>
+
+    <div class="topic-page">
+        <div class="header">
+            <img src="logo.jpg" class="page-logo" alt="LOGO">
+            <div class="header-right">
+                <h1 class="main-title">能源工廠：發電機組裝 (下)</h1>
+            </div>
+        </div>
+
+        <div class="assembly-grid" style="margin-top: 5px;">
             <div class="step-card">
                 <div class="step-img-box">
                     <span>圖例放置區</span>
@@ -547,11 +563,11 @@
             </div>
         </div>
 
-        <div style="display:flex; justify-content: flex-end; align-items: flex-end; margin-top: 5px;">
-            <p style="font-size: 13pt; color: var(--wood-dark); font-weight: 600; margin: 0;">恭喜完成電磁學挑戰！</p>
+        <div style="display:flex; justify-content: flex-end; align-items: flex-end; margin-top: 15px; padding-bottom: 10px;">
+            <p style="font-size: 14pt; color: var(--wood-dark); font-weight: 600; margin: 0;">恭喜完成電磁學挑戰！</p>
         </div>
 
-        <div class="footer">Page 5: 發電機實踐</div>
+        <div class="footer">Page 6: 發電機實踐 (2/2)</div>
     </div>
 
 </body>
