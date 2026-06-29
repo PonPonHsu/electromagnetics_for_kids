@@ -143,7 +143,7 @@
             align-items: center;
             justify-content: center;
             color: var(--mineral-slate);
-            background: var(--paper-bg);
+            background: #ffffff;
             border-radius: 4px;
             min-height: 150px;
             font-size: 10pt;
@@ -203,22 +203,14 @@
             margin-right: 8px;
             vertical-align: text-bottom;
         }
-
-        .placeholder-box {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--wood-light);
-            font-size: 24pt;
-            font-weight: bold;
-            border: 4px dashed var(--wood-light);
-            margin: 50px 0;
-        }
+        
+        ol { margin-top: 5px; margin-bottom: 10px; padding-left: 20px; }
+        ol li { line-height: 1.5; font-size: 10.5pt; }
     </style>
 </head>
 <body>
 
+    <!-- Page 1 -->
     <div class="topic-page">
         <div class="header">
             <img src="logo.jpg" class="page-logo" alt="LOGO">
@@ -236,7 +228,7 @@
         
         <p><span class="tag">觀察實驗</span> 使用強力磁鐵與鐵粉（或磁力觀察片），觀察磁鐵周圍的線條分布。</p>
         <div class="drawing-area" style="min-height: 250px;">
-            在此畫出單顆條形磁鐵周圍的「磁力線」分布圖
+            <!-- 請學生在此畫出單顆條形磁鐵周圍的「磁力線」分布圖 -->
         </div>
         
         <p><span class="tag">思考任務</span></p>
@@ -245,12 +237,13 @@
             <li>如果將兩顆磁鐵的 N 極互相靠近，中間的磁力線會如何變化？</li>
         </ul>
         <div class="drawing-area" style="min-height: 200px;">
-            畫出「N極對N極」時的磁力線模擬圖
+            <!-- 畫出「N極對N極」時的磁力線模擬圖 -->
         </div>
 
         <div class="footer">Page 1: 磁鐵磁場</div>
     </div>
 
+    <!-- Page 2 -->
     <div class="topic-page">
         <div class="header">
             <img src="logo.jpg" class="page-logo" alt="LOGO">
@@ -299,6 +292,7 @@
         <div class="footer">Page 2: 載流導線磁場</div>
     </div>
 
+    <!-- Page 3 -->
     <div class="topic-page">
         <div class="header">
             <img src="logo.jpg" class="page-logo" alt="LOGO">
@@ -355,6 +349,7 @@
         <div class="footer">Page 3: 電磁感應</div>
     </div>
 
+    <!-- Page 4 -->
     <div class="topic-page">
         <div class="header">
             <img src="logo.jpg" class="page-logo" alt="LOGO">
@@ -390,30 +385,58 @@
         <div class="footer">Page 4: 馬達實作</div>
     </div>
 
+    <!-- Page 5 -->
     <div class="topic-page">
         <div class="header">
             <img src="logo.jpg" class="page-logo" alt="LOGO">
             <div class="header-right">
-                <h1 class="main-title">能源工廠：發電機挑戰</h1>
+                <h1 class="main-title">能源工廠：發電機組裝</h1>
             </div>
         </div>
 
         <h2>5. 終極結業任務</h2>
+        <p><b>原理簡介：</b> 透過手搖轉動齒輪，皮帶帶動馬達內的線圈在磁場中旋轉，切割磁力線產生「感應電流」，展示動能轉化為電能點亮 LED 燈的過程！</p>
         
-        <div class="placeholder-box">
-            內容留白<br>
-            (待材料包資訊確認後補充)
+        <div class="alert" style="border-left-color: var(--wood-dark); padding: 10px 20px;">
+            <b>[注意事項]</b> 請小心操作，避免小零件遺失。若遇到組裝問題，請舉手請老師協助。
         </div>
 
-        <p style="text-align: center; color: var(--wood-dark); font-weight: bold;">
-            準備好將你的機械能轉換成電力了嗎？
-        </p>
-
-        <div style="display:flex; justify-content: space-between; align-items: flex-end; margin-top: auto;">
-            <div style="border: 1px dashed var(--mineral-slate); width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 10pt; color: var(--mineral-slate);">
-                老師驗收章
+        <p><span class="tag">組裝步驟</span></p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: var(--paper-bg); padding: 15px; border-radius: 4px; border: 1px solid var(--wood-light);">
+            <div>
+                <b style="color: var(--mineral-dark);">[一、基礎準備]</b>
+                <ol>
+                    <li>安裝前先檢查配件是否齊全。</li>
+                    <li>將導線連接馬達，取 7、8 號木板將馬達固定到 1 號木板上。</li>
+                    <li>將小皮帶輪裝到馬達軸上。</li>
+                    <li>將 9 號木板拼裝到 1 號木板上。</li>
+                </ol>
+                <b style="color: var(--mineral-dark);">[二、轉輪組裝]</b>
+                <ol start="5">
+                    <li>將兩塊 2 號木板疊加拼裝，反面用短螺絲固定。</li>
+                    <li>取兩塊 5 號和 3 號木板固定在一起（帶圓圈的孔需朝同方向對齊以穿入大頭釘）。</li>
+                    <li>用四個長螺絲將其固定。</li>
+                </ol>
             </div>
-            <p style="font-size: 14pt; color: var(--wood-dark); font-weight: 600; margin: 0;">電磁學大師認證</p>
+            <div>
+                <b style="color: var(--mineral-dark);">[三、傳動與底座]</b>
+                <ol start="8">
+                    <li>用短打頭軸穿過圓木板，再套上齒輪。</li>
+                    <li>用長打頭軸穿過三塊圓形木板，套入三塊 4 號木板。</li>
+                    <li>將三塊圓木板裝入 STEP 5 完成的組件，並裝入大皮帶輪。</li>
+                    <li>裝上橡皮筋（連接大小皮帶輪）。</li>
+                    <li>將 10 號和 6 號木板拼裝，反面用螺絲固定。</li>
+                </ol>
+                <b style="color: var(--mineral-dark);">[四、電路連接]</b>
+                <ol start="13">
+                    <li>將黑色導線連接負極(-)，紅色導線接正極(+)。<br><span style="color:var(--accent-terra); font-size:9pt;">(注意不要接錯)</span></li>
+                    <li>將電路板穿過支架插上燈泡，放置於支架孔中，組裝完成！</li>
+                </ol>
+            </div>
+        </div>
+
+        <div style="display:flex; justify-content: flex-end; align-items: flex-end; margin-top: auto;">
+            <p style="font-size: 13pt; color: var(--wood-dark); font-weight: 600; margin: 0;">恭喜完成電磁學挑戰！</p>
         </div>
 
         <div class="footer">Page 5: 發電機實踐</div>
