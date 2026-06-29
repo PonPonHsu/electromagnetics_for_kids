@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>電磁學講義：看不見的力場 (吾思質感版)</title>
+    <title>電磁學講義 (A4吾思質感版)</title>
     <style>
         /* 1. 全域列印與礦物/木質色彩設定 */
         :root {
-            --mineral-dark: #4a5759;   /* 深板岩灰 */
-            --mineral-slate: #6b7a8f;  /* 藍灰色 */
-            --wood-dark: #8a7360;      /* 深木色 */
-            --wood-light: #e6dfd3;     /* 淺木色/米色 */
-            --paper-bg: #fdfbf7;       /* 紙張底色 */
-            --accent-terra: #b87355;   /* 赤陶色 */
+            --mineral-dark: #4a5759;
+            --mineral-slate: #6b7a8f;
+            --wood-dark: #8a7360;
+            --wood-light: #e6dfd3;
+            --paper-bg: #fdfbf7;
+            --accent-terra: #b87355;
             --text-main: #333333;
             --text-muted: #666666;
         }
@@ -27,10 +27,10 @@
             color: var(--text-main);
         }
 
-        /* A4 紙張容器 */
+        /* A4 紙張容器 (螢幕預覽) */
         .topic-page {
             width: 210mm;
-            min-height: 297mm;
+            height: 297mm; /* 鎖定絕對高度 */
             padding: 20mm;
             margin: 10mm auto;
             background: white;
@@ -41,15 +41,28 @@
             overflow: hidden;
         }
 
-        /* 列印分頁控制 */
+        /* 列印分頁控制 (A4 滿版) */
+        @page {
+            size: A4;
+            margin: 0; /* 移除瀏覽器預設頁邊距 */
+        }
+        
         @media print {
-            body { background: none; }
+            body { 
+                background: white; 
+                margin: 0; 
+            }
             .topic-page {
                 margin: 0;
                 box-shadow: none;
-                width: 100%;
-                height: 100%;
+                width: 210mm;
+                height: 297mm;
+                page-break-after: always;
                 break-after: page;
+            }
+            .topic-page:last-child {
+                page-break-after: auto;
+                break-after: auto;
             }
         }
 
@@ -63,15 +76,8 @@
             margin-bottom: 25px;
         }
 
-        .page-logo {
-            height: 45px;
-            object-fit: contain;
-        }
-
-        .header-right {
-            text-align: right;
-        }
-
+        .page-logo { height: 45px; object-fit: contain; }
+        .header-right { text-align: right; }
         .main-title {
             font-size: 20pt;
             color: var(--mineral-dark);
@@ -79,7 +85,6 @@
             font-weight: 600;
             letter-spacing: 1px;
         }
-
         .student-info {
             font-size: 11pt;
             color: var(--text-muted);
@@ -87,7 +92,6 @@
             gap: 15px;
             justify-content: flex-end;
         }
-
         .underline {
             border-bottom: 1px solid var(--text-muted);
             min-width: 80px;
@@ -135,6 +139,7 @@
             color: #5c4538;
         }
 
+        /* 純白作圖區 */
         .drawing-area {
             border: 1px dashed var(--mineral-slate);
             flex-grow: 1;
@@ -142,12 +147,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--mineral-slate);
             background: #ffffff;
             border-radius: 4px;
             min-height: 150px;
-            font-size: 10pt;
-            letter-spacing: 1px;
         }
 
         .reference-image-container {
@@ -206,11 +208,22 @@
         
         ol { margin-top: 5px; margin-bottom: 10px; padding-left: 20px; }
         ol li { line-height: 1.5; font-size: 10.5pt; }
+
+        .placeholder-box {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--wood-light);
+            font-size: 24pt;
+            font-weight: bold;
+            border: 4px dashed var(--wood-light);
+            margin: 50px 0;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Page 1 -->
     <div class="topic-page">
         <div class="header">
             <img src="logo.jpg" class="page-logo" alt="LOGO">
@@ -227,23 +240,18 @@
         <p>磁力與電力一樣，都有「同極相斥、異極相吸」的特性。雖然眼睛看不見，但磁鐵周圍充滿了名為「磁場」的空間。</p>
         
         <p><span class="tag">觀察實驗</span> 使用強力磁鐵與鐵粉（或磁力觀察片），觀察磁鐵周圍的線條分布。</p>
-        <div class="drawing-area" style="min-height: 250px;">
-            <!-- 請學生在此畫出單顆條形磁鐵周圍的「磁力線」分布圖 -->
-        </div>
+        <div class="drawing-area" style="min-height: 250px;"></div>
         
         <p><span class="tag">思考任務</span></p>
         <ul>
             <li>磁力線最密集的地方在哪裡？ <span class="underline"></span></li>
             <li>如果將兩顆磁鐵的 N 極互相靠近，中間的磁力線會如何變化？</li>
         </ul>
-        <div class="drawing-area" style="min-height: 200px;">
-            <!-- 畫出「N極對N極」時的磁力線模擬圖 -->
-        </div>
+        <div class="drawing-area" style="min-height: 200px;"></div>
 
         <div class="footer">Page 1: 磁鐵磁場</div>
     </div>
 
-    <!-- Page 2 -->
     <div class="topic-page">
         <div class="header">
             <img src="logo.jpg" class="page-logo" alt="LOGO">
@@ -292,7 +300,6 @@
         <div class="footer">Page 2: 載流導線磁場</div>
     </div>
 
-    <!-- Page 3 -->
     <div class="topic-page">
         <div class="header">
             <img src="logo.jpg" class="page-logo" alt="LOGO">
@@ -349,7 +356,6 @@
         <div class="footer">Page 3: 電磁感應</div>
     </div>
 
-    <!-- Page 4 -->
     <div class="topic-page">
         <div class="header">
             <img src="logo.jpg" class="page-logo" alt="LOGO">
@@ -385,7 +391,6 @@
         <div class="footer">Page 4: 馬達實作</div>
     </div>
 
-    <!-- Page 5 -->
     <div class="topic-page">
         <div class="header">
             <img src="logo.jpg" class="page-logo" alt="LOGO">
