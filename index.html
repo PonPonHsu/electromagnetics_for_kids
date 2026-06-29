@@ -73,7 +73,7 @@
             align-items: center;
             border-bottom: 1.5px solid var(--mineral-dark);
             padding-bottom: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .page-logo { height: 45px; object-fit: contain; }
@@ -105,7 +105,7 @@
             color: var(--wood-dark);
             border-left: 4px solid var(--wood-dark);
             padding-left: 12px;
-            margin: 25px 0 15px;
+            margin: 20px 0 15px;
             font-weight: 600;
         }
 
@@ -133,10 +133,11 @@
         .alert {
             background: #fcf9f5;
             border-left: 4px solid var(--accent-terra);
-            padding: 12px 20px;
-            margin: 15px 0;
+            padding: 10px 15px;
+            margin: 10px 0;
             border-radius: 0 4px 4px 0;
             color: #5c4538;
+            font-size: 10.5pt;
         }
 
         /* 純白作圖區 */
@@ -206,19 +207,58 @@
             vertical-align: text-bottom;
         }
         
-        ol { margin-top: 5px; margin-bottom: 10px; padding-left: 20px; }
-        ol li { line-height: 1.5; font-size: 10.5pt; }
+        ol { margin-top: 5px; margin-bottom: 5px; padding-left: 20px; }
+        ol li { line-height: 1.4; font-size: 10.5pt; }
 
-        .placeholder-box {
+        /* 第五頁專用：14宮格排版 */
+        .assembly-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 10px;
             flex-grow: 1;
+        }
+        .step-card {
+            background: var(--paper-bg);
+            border: 1px solid var(--wood-light);
+            border-radius: 4px;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .step-img-box {
+            background: #ffffff;
+            border: 1px dashed var(--mineral-slate);
+            height: 65px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--wood-light);
-            font-size: 24pt;
+            color: var(--mineral-slate);
+            font-size: 8pt;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+        .step-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #ffffff;
+        }
+        .step-desc {
+            font-size: 8.5pt;
+            line-height: 1.4;
+            color: var(--text-main);
+            text-align: left;
+        }
+        .step-num {
             font-weight: bold;
-            border: 4px dashed var(--wood-light);
-            margin: 50px 0;
+            color: var(--mineral-dark);
+            margin-right: 2px;
         }
     </style>
 </head>
@@ -400,47 +440,114 @@
         </div>
 
         <h2>5. 終極結業任務</h2>
-        <p><b>原理簡介：</b> 透過手搖轉動齒輪，皮帶帶動馬達內的線圈在磁場中旋轉，切割磁力線產生「感應電流」，展示動能轉化為電能點亮 LED 燈的過程！</p>
+        <p><b>原理簡介：</b> 透過手搖轉動齒輪，皮帶帶動線圈在磁場中旋轉，切割磁力線產生「感應電流」，點亮 LED 燈！</p>
         
-        <div class="alert" style="border-left-color: var(--wood-dark); padding: 10px 20px;">
-            <b>[注意事項]</b> 請小心操作，避免小零件遺失。若遇到組裝問題，請舉手請老師協助。
+        <div class="alert" style="border-left-color: var(--wood-dark); padding: 8px 15px; margin: 5px 0;">
+            <b>[注意事項]</b> 請小心操作避免零件遺失，遇到組裝問題請舉手請老師協助。
         </div>
 
-        <p><span class="tag">組裝步驟</span></p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: var(--paper-bg); padding: 15px; border-radius: 4px; border: 1px solid var(--wood-light);">
-            <div>
-                <b style="color: var(--mineral-dark);">[一、基礎準備]</b>
-                <ol>
-                    <li>安裝前先檢查配件是否齊全。</li>
-                    <li>將導線連接馬達，取 7、8 號木板將馬達固定到 1 號木板上。</li>
-                    <li>將小皮帶輪裝到馬達軸上。</li>
-                    <li>將 9 號木板拼裝到 1 號木板上。</li>
-                </ol>
-                <b style="color: var(--mineral-dark);">[二、轉輪組裝]</b>
-                <ol start="5">
-                    <li>將兩塊 2 號木板疊加拼裝，反面用短螺絲固定。</li>
-                    <li>取兩塊 5 號和 3 號木板固定在一起（帶圓圈的孔需朝同方向對齊以穿入大頭釘）。</li>
-                    <li>用四個長螺絲將其固定。</li>
-                </ol>
+        <div class="assembly-grid">
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step1.png" alt="步驟 1" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">1.</span> 安裝前先檢查配件是否齊全。</div>
             </div>
-            <div>
-                <b style="color: var(--mineral-dark);">[三、傳動與底座]</b>
-                <ol start="8">
-                    <li>用短打頭軸穿過圓木板，再套上齒輪。</li>
-                    <li>用長打頭軸穿過三塊圓形木板，套入三塊 4 號木板。</li>
-                    <li>將三塊圓木板裝入 STEP 5 完成的組件，並裝入大皮帶輪。</li>
-                    <li>裝上橡皮筋（連接大小皮帶輪）。</li>
-                    <li>將 10 號和 6 號木板拼裝，反面用螺絲固定。</li>
-                </ol>
-                <b style="color: var(--mineral-dark);">[四、電路連接]</b>
-                <ol start="13">
-                    <li>將黑色導線連接負極(-)，紅色導線接正極(+)。<br><span style="color:var(--accent-terra); font-size:9pt;">(注意不要接錯)</span></li>
-                    <li>將電路板穿過支架插上燈泡，放置於支架孔中，組裝完成！</li>
-                </ol>
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step2.png" alt="步驟 2" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">2.</span> 將導線連接馬達，取 7、8 號木板將馬達固定到 1 號木板上。</div>
+            </div>
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step3.png" alt="步驟 3" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">3.</span> 將小皮帶輪裝到馬達軸上。</div>
+            </div>
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step4.png" alt="步驟 4" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">4.</span> 將 9 號木板拼裝到 1 號木板上。</div>
+            </div>
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step5.png" alt="步驟 5" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">5.</span> 將兩塊 2 號木板疊加拼裝，反面用短螺絲固定。</div>
+            </div>
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step6.png" alt="步驟 6" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">6.</span> 取兩塊 5 號和 3 號木板固定（帶圓圈的孔需朝同向對齊）。</div>
+            </div>
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step7.png" alt="步驟 7" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">7.</span> 用四個長螺絲將其固定。</div>
+            </div>
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step8.png" alt="步驟 8" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">8.</span> 用短打頭軸穿過圓木板，再套上齒輪。</div>
+            </div>
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step9.png" alt="步驟 9" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">9.</span> 用長打頭軸穿過三塊圓木板，套入三塊 4 號木板。</div>
+            </div>
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step10.png" alt="步驟 10" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">10.</span> 裝入步驟 5 的組件與大皮帶輪。</div>
+            </div>
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step11.png" alt="步驟 11" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">11.</span> 裝上橡皮筋（連接大小皮帶輪）。</div>
+            </div>
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step12.png" alt="步驟 12" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">12.</span> 將 10 號和 6 號木板拼裝，反面用螺絲固定。</div>
+            </div>
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step13.png" alt="步驟 13" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">13.</span> 黑線接負極(-)，紅線接正極(+)。</div>
+            </div>
+            <div class="step-card">
+                <div class="step-img-box">
+                    <span>圖例放置區</span>
+                    <img src="step14.png" alt="步驟 14" onerror="this.style.display='none'">
+                </div>
+                <div class="step-desc"><span class="step-num">14.</span> 電路板插上燈泡放於支架孔，完成！</div>
             </div>
         </div>
 
-        <div style="display:flex; justify-content: flex-end; align-items: flex-end; margin-top: auto;">
+        <div style="display:flex; justify-content: flex-end; align-items: flex-end; margin-top: 5px;">
             <p style="font-size: 13pt; color: var(--wood-dark); font-weight: 600; margin: 0;">恭喜完成電磁學挑戰！</p>
         </div>
 
